@@ -1,14 +1,11 @@
 package edu.psu.jeh5723.lab2;
 
-import android.content.Intent;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,31 +23,33 @@ public class MainActivity extends AppCompatActivity {
         String message = "";
 
         //Get email address
-        EditText editText = (EditText) findViewById(R.id.editTextAddress);
+        EditText editText = findViewById(R.id.editTextAddress);
         String emailAddress = editText.getText().toString();
 
         //Get email subject
-        editText = (EditText) findViewById(R.id.editTextSubject);
+        editText = findViewById(R.id.editTextSubject);
         String emailSubject = editText.getText().toString();
 
         //Get spinner value
-        Spinner mySpinner =(Spinner) findViewById(R.id.dataStructureSpinner);
+        Spinner mySpinner = findViewById(R.id.dataStructureSpinner);
         String dataStructure = mySpinner.getSelectedItem().toString();
         int spinnerPosition = mySpinner.getSelectedItemPosition();
 
         //Get checkboxes
-        CheckBox getMinCB = (CheckBox)findViewById(R.id.checkBoxGetMin);
-        CheckBox insertCB = (CheckBox)findViewById(R.id.checkBoxInsert);
-        CheckBox searchCB = (CheckBox)findViewById(R.id.checkBoxSearch);
+        CheckBox getMinCB = findViewById(R.id.checkBoxGetMin);
+        CheckBox insertCB = findViewById(R.id.checkBoxInsert);
+        CheckBox searchCB = findViewById(R.id.checkBoxSearch);
 
         //Get radio button selections
-        RadioButton worstCaseRB = (RadioButton)findViewById(R.id.radioButtonWorstCase);
-        RadioButton averageCaseRB = (RadioButton)findViewById(R.id.radioButtonAverageCase);
+        RadioButton worstCaseRB = findViewById(R.id.radioButtonWorstCase);
+        RadioButton averageCaseRB = findViewById(R.id.radioButtonAverageCase);
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioCase);
-        int selectedId = radioGroup.getCheckedRadioButtonId();
+        //Fill in results
+        TextView textView = findViewById(R.id.textViewTo);
+        textView.setText(emailAddress);
 
-        TextView textView = (TextView) findViewById(R.id.textViewResults);
+        textView = findViewById(R.id.textViewSubject);
+        textView.setText(emailSubject);
 
         int selectedCase = 0;
         if (worstCaseRB.isChecked()) {
@@ -76,22 +75,25 @@ public class MainActivity extends AppCompatActivity {
                                                        { {"O(1)", "O(log(n))", "O(n)"},
                                                          {"ϴ(1)", "ϴ(log(n))", "ϴ(n)"} } };
 
-
         if (getMinCB.isChecked()){
-            message = message + "   Get Min: " + complexity[spinnerPosition][selectedCase][0] + "\n";
+            message = message + "    Get Minimum: " + complexity[spinnerPosition][selectedCase][0] + "\n";
         }
-        if (insertCB.isChecked()){
-            message = message + "   Insert: " + complexity[spinnerPosition][selectedCase][1] + "\n";
+        if (insertCB.isChecked()) {
+            if (spinnerPosition == 3) {
+                message = message + "    Insert (at the beginning): " + complexity[spinnerPosition][selectedCase][1] + "\n";
+            }
+            else{
+                message = message + "    Insert: " + complexity[spinnerPosition][selectedCase][1] + "\n";
+            }
         }
         if (searchCB.isChecked()){
-            message = message + "   Search: " + complexity[spinnerPosition][selectedCase][2] + "\n";
+            message = message + "    Search: " + complexity[spinnerPosition][selectedCase][2] + "\n";
         }
 
-
-
-
-
+        //Sets the text
+        textView = findViewById(R.id.textViewResults);
         textView.setText(message);
+
         //@@@@@@@@@@@@@@@@@ For later implementation @@@@@@@@@@@@@@@@@@@@@
         //intent.putExtra(EXTRA_MESSAGE, message);
         //startActivity(intent);
