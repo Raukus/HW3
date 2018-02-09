@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Lab 2</string>
+    <string name="emailLabel">Email</string>
+    <string name="emailAddressHint">Email Address</string>
+    <string name="emailSubjectHint">Email Subject</string>
+    <string name="complexityLabel">Complexity</string>
+    <string name="dataStructure">Data Structure</string>
+    <string name="operations">Operations</string>
+    <string name="getMin">Get Min</string>
+    <string name="insert">Insert</string>
+    <string name="search">Search</string>
+    <string name="worstCase">Worst Case</string>
+    <string name="ResultLabel">Result</string>
+    <string name="to">To:</string>
+    <string name="subject">Subject:</string>
+    <string name="avgCase">Average Case</string>
+    <string name="worstCaseOption">Worst Case</string>
+
+    <string-array name="dataStructureTypes">
+        <item>2-3 Tree</item>
+        <item>Binary Search Tree</item>
+        <item>Hash Table</item>
+        <item>Linked List</item>
+        <item>Min Heap</item>
+    </string-array>
+</resources>
