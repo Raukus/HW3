@@ -210,7 +210,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="4dp"
-        android:freezesText="true"
+        android:freezesText="false"
         android:lines="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewSubjectLabel"
@@ -222,7 +222,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:freezesText="true"
+        android:freezesText="false"
         app:layout_constraintStart_toEndOf="@+id/textViewSubjectLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewTo" />
 
@@ -239,7 +239,7 @@
         android:id="@+id/textViewTo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:freezesText="true"
+        android:freezesText="false"
         app:layout_constraintStart_toStartOf="@+id/textViewSubject"
         app:layout_constraintTop_toTopOf="@+id/textViewToLabel" />
 

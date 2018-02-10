@@ -17,6 +17,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            TextView tv = findViewById(R.id.textViewTo);
+            tv.setText(savedInstanceState.getString("EMAIL_ADDRESS"));
+
+            tv = findViewById(R.id.textViewSubject);
+            tv.setText(savedInstanceState.getString("EMAIL_SUBJECT"));
+
+            tv = findViewById(R.id.textViewResults);
+            tv.setText(savedInstanceState.getString("RESULTS_DATA"));
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+
+        //Saves email address
+        TextView tv = findViewById(R.id.textViewTo);
+        outState.putString("EMAIL_ADDRESS", tv.getText().toString());
+
+        //saves subject
+        tv = findViewById(R.id.textViewSubject);
+        outState.putString("EMAIL_SUBJECT", tv.getText().toString());
+
+        //saves results
+        tv = findViewById(R.id.textViewResults);
+        outState.putString("RESULTS_DATA", tv.getText().toString());
+
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState);
+    }
+
     public void sendMessage(View view){
         //String EXTRA_MESSAGE = "SENDING MESSAGE";
         //Intent intent = new Intent(this, MainActivity.class);
